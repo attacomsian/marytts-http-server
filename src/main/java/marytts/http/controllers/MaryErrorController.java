@@ -45,7 +45,8 @@ public class MaryErrorController implements ErrorController {
     @ResponseBody
     public ResponseEntity<Object> error(HttpServletRequest request) {
         HttpStatus status = getStatus(request);
-        return new ResponseEntity<Object>(new ErrorResponse(status.value(), status.name()), status);
+        String path = "http://" + request.getServerName() + ":" + request.getServerPort();
+        return new ResponseEntity<Object>(new ErrorResponse(status.value(), status.name(), path), status);
     }
 
     private HttpStatus getStatus(HttpServletRequest request) {

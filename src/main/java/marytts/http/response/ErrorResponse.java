@@ -29,15 +29,17 @@ public class ErrorResponse {
 
     private final String message; /*< The error message */
 
+    private final String hint; /*< api hint */
     /**
      * Constructor which initialize the data structure
      *
      * @param code - the code value
      * @param message - the message
      */
-    public ErrorResponse(Integer code, String message) {
+    public ErrorResponse(Integer code, String message, String hint) {
         this.code = code;
         this.message = message;
+        this.hint = hint;
     }
 
     /**
@@ -57,4 +59,8 @@ public class ErrorResponse {
     public String getMessage() {
         return message;
     }
+
+    public String getHint() {
+        return "Please use " + hint + "/help API endpoint to retreive all the available API endpoints.";
+    } 
 }
